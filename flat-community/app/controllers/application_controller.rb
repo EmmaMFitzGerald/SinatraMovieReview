@@ -11,13 +11,13 @@ class ApplicationController < Sinatra::Base
 
 
   get '/' do
-    erb :index
+    erb :login
   end
 
   helpers do
     def redirect_if_not_logged_in
       if !logged_in?
-        # redirect "/login?error=You have to be logged in to do that"
+        redirect "/login?error=You have to be logged in to do that"
       end
     end
 
