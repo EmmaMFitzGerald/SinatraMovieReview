@@ -14,9 +14,10 @@
 ActiveRecord::Schema.define(version: 20190912141325) do
 
   create_table "reviews", force: :cascade do |t|
-    t.string "title"
-    t.string "genre"
-    t.string "content"
+    t.string  "title"
+    t.string  "genre"
+    t.string  "content"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

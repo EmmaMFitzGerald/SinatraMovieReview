@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.string :title
       t.string :genre
       t.string :content
+      t.integer :user_id
     end
   end
 end

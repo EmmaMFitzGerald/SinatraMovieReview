@@ -1,5 +1,18 @@
-<% @reviews.each do |review| %>
-  <h1><%=review.title %></h1>
-  <h2><%=review.genre %></h2>
-  <p><%= review.content %></p>
-<% end %>
+<h2> <%= @review.title %> </h2>
+
+<p>Genre: <%= @review.genre %></p>
+<p>Review: <%= @review.content %></p>
+
+<form action="/reviews/<%=@review.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete This Review">
+</form>
+<br>
+
+<a href='/reviews/<%=@review.id%>/edit'>Edit this Movie Review</a>
+<br>
+<a href='/reviews/new'>Review Another Movie</a>
+<br>
+<a href='/reviews'>See all of the reviews</a>
+<br>
+<a href='/logout'>Log Out</a>

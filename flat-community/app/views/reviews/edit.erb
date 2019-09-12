@@ -1,0 +1,16 @@
+
+<form action="/reviews/<%=@review.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label for="title">Title: </label>
+  <input id="title" type="text" name="review[title]" value="<%=@review.title%>"/>
+  <br>
+  <label for="genre">Genre: </label>
+  <input id="genre" type="text" name="review[genre]" value="<%=@review.genre%>"/>
+  <br>
+  <label for="content">Content: </label>
+  <textarea id="content" name="review[content]"><%=@review.content%></textarea>
+  <br>
+  <input type="submit" value="Edit review"/>
+
+  <a href='/logout'>Log Out</a>
+</form>
