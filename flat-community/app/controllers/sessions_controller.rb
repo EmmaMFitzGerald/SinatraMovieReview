@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
        session[:user_id] = @user.id
        redirect '/reviews'
      else
-       redirect '/login'
+       erb :login_failure
      end
   end
 

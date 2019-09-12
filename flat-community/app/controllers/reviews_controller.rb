@@ -1,8 +1,12 @@
 class ReviewsController < ApplicationController
 
   get '/reviews' do
-    @reviews = Review.all
-    erb :'reviews/reviews'
+    if logged_in?
+      @reviews = Review.all
+      erb :'reviews/reviews'
+    else
+      erb :failure
+    end
   end
 
   get '/reviews/new' do
@@ -10,12 +14,16 @@ class ReviewsController < ApplicationController
   end
 
   post '/reviews' do
-    @review = Review.create(
+    if params[:title] == "" || params[:genre] == "" || params[:content] == ""
+      erb :'/reviews/editing_failure'
+    else
+      @review = Review.create(
       :title => params[:title],
       :genre => params[:genre],
       :content => params[:content],
       :user_id => params[:user_id])
-    redirect "/reviews/#{@review.id}"
+      redirect "/reviews/#{@review.id}"
+      end
   end
 
   get '/reviews/:id' do
