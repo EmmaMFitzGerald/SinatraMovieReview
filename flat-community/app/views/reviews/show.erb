@@ -1,0 +1,5 @@
+<% @reviews.each do |review| %>
+  <h1><%=review.title %></h1>
+  <h2><%=review.genre %></h2>
+  <p><%= review.content %></p>
+<% end %>

@@ -1,7 +1,9 @@
 
 class UsersController < ApplicationController
 
-  post '/login' do
-    "You are logged in as #{session[:email]}"
+  get '/login' do
+    erb :'/users/login'
   end
+
 end
+
