@@ -15,11 +15,12 @@ class UsersController < ApplicationController
       redirect '/signup'
       #need to fill in error message here
     else
-      @user = User.create(
+      @user = User.new(
           :first_name => params[:first_name],
           :last_name => params[:last_name],
           :email => params[:email],
           :password => params[:password])
+      @user.save
       session[:user_id] = @user.id
       redirect '/reviews'
     end
