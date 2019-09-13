@@ -1,16 +1,15 @@
 class ReviewsController < ApplicationController
 
   get '/reviews' do
-    if logged_in?
+    # if logged_in?
       @reviews = Review.all
-      erb :'reviews/reviews'
-    else
-      erb :failure
-    end
+      erb :"reviews/reviews"
+    # else
+    #   erb :failure
   end
 
   get '/reviews/new' do
-    erb :'reviews/new'
+    erb :"reviews/new"
   end
 
   post '/reviews' do
@@ -36,8 +35,12 @@ class ReviewsController < ApplicationController
   end
 
   get '/reviews/:id/edit' do
-    @review = Review.find_by_id(params[:id])
-    erb :'/reviews/edit'
+    if !logged_in?
+      erb :failure
+    else
+      @review = Review.find(params[:id])
+      erb :'/reviews/edit'
+    end
   end
 
   patch '/reviews/:id' do
@@ -50,9 +53,13 @@ class ReviewsController < ApplicationController
   end
 
   delete '/reviews/:id/delete' do
-    @review = Review.find_by_id(params[:id])
-    @review.delete
-    redirect to '/reviews'
+    if !logged_in?
+      erb :failure
+    else
+      @review = Review.find_by_id(params[:id])
+      @review.delete
+      redirect to '/reviews'
+    end
   end
 
   end

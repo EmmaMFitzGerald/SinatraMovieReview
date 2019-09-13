@@ -23,9 +23,12 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/reviews'
     end
+
+    get '/profile'
+      erb :'/users/profile'
+    end
   end
 
 
 
-end
 
