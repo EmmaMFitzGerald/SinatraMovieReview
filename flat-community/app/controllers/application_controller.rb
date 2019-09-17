@@ -7,10 +7,10 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "movie_reviews"
+    register Sinatra::Flash
   end
 
   get '/' do
-    flash[:notice] = "Hooray, Flash is working!"
     erb :index
   end
 

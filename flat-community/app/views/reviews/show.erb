@@ -3,10 +3,13 @@
 <p>Genre: <%= @review.genre %></p>
 <p>Review: <%= @review.content %></p>
 
+<%# if @review.user_id == current_user.id %>
 <form action="/reviews/<%=@review.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete This Review">
 </form>
+
+  <%#end %>
 <br>
 
 <a href='/reviews/<%=@review.id%>/edit'>Edit this Movie Review</a>

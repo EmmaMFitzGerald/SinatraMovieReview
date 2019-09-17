@@ -11,20 +11,23 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
+
     if params[:first_name] == "" || params[:last_name] == "" || params[:email] == "" || params[:password] == ""
+      flash.now[:notice] = "You must fill in all spaces"
       redirect '/signup'
-      #need to fill in error message here
     else
       @user = User.create(
           :first_name => params[:first_name],
           :last_name => params[:last_name],
           :email => params[:email],
           :password => params[:password])
+      redirect '/signup' if !@user.id
       session[:user_id] = @user.id
       redirect '/reviews'
     end
+  end
 
-    get '/profile'
+    get '/profile' do
       erb :'/users/profile'
     end
   end

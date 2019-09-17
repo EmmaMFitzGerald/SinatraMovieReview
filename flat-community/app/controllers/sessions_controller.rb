@@ -20,8 +20,13 @@ class SessionsController < ApplicationController
   end
 
   get '/logout' do
-    session.clear
-    redirect '/'
+    if logged_in?
+      session.clear
+      flash[:message] = "You have been logged out"
+      redirect '/'
+    else
+      redirect '/'
+    end
   end
 
 end

@@ -1,23 +1,16 @@
 <h1>Reviews</h1>
 
+<!--<h2>You are logged in as <%#= @user.first_name %></h2>-->
+
 <a href="/profile">Profile</a>
 
-<%# @reviews.each do |review| %>
-<!--  <h2><a href="/reviews/<%#=review.id%>"><%#=review.title %></a></h2>-->
-<!--  <p><%#=review.genre %></p>-->
-<!--  <p><%#= review.content %></p>-->
+<% @reviews.each do |review| %>
+  <h2><a href="/reviews/<%=review.id%>"><%=review.title %></a></h2>
+  <p><%=review.genre %></p>
+  <p><%= review.content %></p>
 
-<%# end %>
+<% end %>
 
-<div class="card" style="width: 30rem;">
-  <div class="card-body">
-    <% @reviews.each do |review| %>
-    <h5 class="card-title"><a href="/reviews/<%=review.id%>"><%=review.title %></a></h5>
-    <h6 class="card-subtitle mb-2 text-muted"><%=review.genre %></h6>
-    <p class="card-text"><%= review.content %></p>
-    <% end %>
-  </div>
-</div>
 <a  href="/reviews/new">Add Review</a>
 <br>
 <a href='/logout' class="btn btn-light">Log Out</a>
