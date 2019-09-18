@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   #CREATE USER
   get '/signup' do
     if logged_in?
+      flash[:message] = "You are already logged in"
       redirect '/reviews'
     else
       erb :'users/signup'
