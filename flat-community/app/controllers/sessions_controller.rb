@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   get '/login' do
     if logged_in?
       redirect '/reviews'
-      #need error message here
+      flash[:message] = "You are already logged in!"
     else
       erb :'/users/login'
     end
@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(:email => params[:email])
      if @user && @user.authenticate(params[:password])
        session[:user_id] = @user.id
+       flash[:message] = "You are logged in!"
        redirect '/reviews'
      else
        erb :login_failure
@@ -22,7 +23,7 @@ class SessionsController < ApplicationController
   get '/logout' do
     if logged_in?
       session.clear
-      flash[:message] = "You have been logged out"
+      flash[:message] = "You have been logged out!"
       redirect '/'
     else
       redirect '/'

@@ -14,7 +14,6 @@ class ReviewsController < ApplicationController
       flash[:message] = "Please fill in all areas"
       redirect '/reviews/new'
     else
-      user = current_user
       @review = Review.create(
           :title => params[:title],
           :genre => params[:genre],
@@ -33,15 +32,15 @@ class ReviewsController < ApplicationController
     end
   end
 
-  get '/profile' do
-    if logged_in?
-      @user = current_user
-      @reviews = @user.reviews.all
-      erb :'/reviews/profile'
-    else
-      erb :failure
-    end
-  end
+  # get '/profile' do
+  #   if logged_in?
+  #     @user = current_user
+  #     @reviews = @user.reviews.all
+  #     erb :'/reviews/profile'
+  #   else
+  #     erb :failure
+  #   end
+  # end
 
   get '/reviews/:id' do
     if logged_in?
