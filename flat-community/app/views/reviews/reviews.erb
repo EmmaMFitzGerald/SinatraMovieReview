@@ -2,10 +2,6 @@
 
 <h1>Reviews</h1>
 
-<!--<h2>You are logged in as <%#= @user.first_name %></h2>-->
-
-<!--<a href="/profile">Profile</a>-->
-
 <% @reviews.each do |review| %>
   <h2><a href="/reviews/<%=review.id%>"><%=review.title %></a></h2>
   <p><%=review.genre %></p>
@@ -16,8 +12,4 @@
 <a  href="/reviews/new">Add Review</a>
 <br>
 <a href='/logout' class="btn btn-light">Log Out</a>
-<form align="right" name="form1" method="post" action="log_out.php">
-  <label class="logoutLblPos">
-    <input name="submit2" type="submit" id="submit2" value="log out">
-  </label>
-</form>
+
