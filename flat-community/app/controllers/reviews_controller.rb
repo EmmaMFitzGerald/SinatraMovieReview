@@ -73,9 +73,9 @@ class ReviewsController < ApplicationController
                 flash[:message] = "Oops! Reviews must have a title, genre and content. Please try again."
                 redirect to "/reviews/#{params[:id]}/edit"
       elsif @review = Review.find_by_id(params[:id])
-        @review.title = params[:title]
-        @review.genre = params[:genre]
-        @review.content = params[:content]
+        @review.title = params[:review][:title]
+        @review.genre = params[:review][:genre]
+        @review.content = params[:review][:content]
         @review.save
         redirect to "/reviews/#{@review.id}"
       else
