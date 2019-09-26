@@ -70,7 +70,7 @@ class ReviewsController < ApplicationController
       erb :failure
     else
       if params[:title] == "" || params[:genre] == "" || params[:content] == ""
-                flash[:message] = "Oops! Reviews must have a title, genre and content. Please try again."
+                flash[:message] = "Reviews must have a title, genre and content. Please try again."
                 redirect to "/reviews/#{params[:id]}/edit"
       elsif @review = Review.find_by_id(params[:id])
         @review.title = params[:review][:title]
